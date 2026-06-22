@@ -1,0 +1,10 @@
+--- a/arch/arm/include/asm/compiler.h
++++ b/arch/arm/include/asm/compiler.h
+@@ -17,7 +17,6 @@
+ 	    ".ifnc " x y ",r11fp; "		\
+ 	      ".ifnc " x y ",ipr12; " 		\
+ 	        ".ifnc " x y ",r12ip; "		\
+-	          ".err; "			\
+ 	        ".endif; "			\
+ 	      ".endif; "			\
+ 	    ".endif; "				\

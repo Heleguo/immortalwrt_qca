@@ -1,0 +1,26 @@
+--- a/Makefile
++++ b/Makefile
+@@ -619,6 +619,7 @@ include arch/$(SRCARCH)/Makefile
+ KBUILD_CFLAGS	+= $(call cc-option,-fno-delete-null-pointer-checks,)
+ KBUILD_CFLAGS	+= $(call cc-disable-warning,maybe-uninitialized,)
+ KBUILD_CFLAGS	+= $(call cc-disable-warning,frame-address,)
++KBUILD_CFLAGS	+= $(call cc-option,-fno-ipa-sra,)
+ 
+ ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
+ KBUILD_CFLAGS	+= -Os $(EXTRA_OPTIMIZATION)
+@@ -711,6 +712,13 @@ KBUILD_CFLAGS   += $(call cc-option, -femit-struct-debug-baseonly) \
+ # These warnings generated too much noise in a regular build.
+ # Use make W=1 to enable them (see scripts/Makefile.build)
+ KBUILD_CFLAGS += $(call cc-disable-warning, unused-but-set-variable)
+ KBUILD_CFLAGS += $(call cc-disable-warning, unused-const-variable)
++KBUILD_CFLAGS += $(call cc-disable-warning, packed-not-aligned)
++KBUILD_CFLAGS += $(call cc-disable-warning, attribute-alias)
++KBUILD_CFLAGS += $(call cc-disable-warning, format-truncation)
++KBUILD_CFLAGS += $(call cc-disable-warning, sizeof-pointer-memaccess)
++KBUILD_CFLAGS += $(call cc-disable-warning, stringop-truncation)
++KBUILD_CFLAGS += $(call cc-disable-warning, stringop-overflow)
++KBUILD_CFLAGS += $(call cc-disable-warning, duplicate-decl-specifier)
+ endif
+
+ ifdef CONFIG_FRAME_POINTER
+ KBUILD_CFLAGS	+= -fno-omit-frame-pointer -fno-optimize-sibling-calls
